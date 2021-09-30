@@ -1,0 +1,35 @@
+<h1>Cadastrar Paciente</h1>
+
+<div class="well">
+  <form #formPaciente="ngForm">
+    <div class="form-group">
+      <label for="nome">Paciente:</label>
+      <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]= "paciente.nome" minlength="5" #nome="ngModel" required> 
+      <div *ngIf="nome.errors && (nome.dirty || nome.touched)" class="alert alert-danger">
+        <div [hidden]="!nome.errors.required">
+          Digite o nome.
+        </div>
+        <div [hidden]="!nome.errors.minlength">
+          A nome deve conter ao menos 5 caracteres.
+        </div>
+      </div>
+      
+      <div class="form-group">
+      <label for="prioridade">Prioridade do Paciente:</label>
+          <select name="prioridade" id="prioridade" class="form-control col-2" id="prioridade" name="prioridade" [(ngModel)]= "paciente.prioridade" #prioridade="ngModel" required>
+              <option value="Emergência">Emergência</option>
+              <option value="Urgente">Urgente</option>
+              <option value="Pouco Urgente">Pouco Urgente</option>
+              <option value="Não Urgente">Não Urgente</option>
+          </select>
+      </div>
+
+    </div>
+    <div class="form-group text-center">
+      <input type="submit" class="btn btn-success" (click)="cadastrar()" value="Cadastrar" [disabled]="!formPaciente.form.valid">
+      <a class="btn btn-default" [routerLink]="['/pacientes']">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Voltar
+      </a>
+    </div>
+  </form>
+</div>
