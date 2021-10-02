@@ -38,9 +38,20 @@ export class PacienteService {
     const pacientes : Paciente[] = this.ListarTodos();
     pacientes.forEach((obj, index, objs)=>{
       if(id === obj.id){
+        objs[index].concluido = !obj.concluido;
+      }
+    });
+    localStorage['pacientes'] = JSON.stringify(pacientes);
+  }
+
+  remover(id:number):void{
+    const pacientes : Paciente[] = this.ListarTodos();
+    pacientes.forEach((obj, index, objs)=>{
+      if(id === obj.id){
         objs[index].ativo = !obj.ativo;
       }
     });
     localStorage['pacientes'] = JSON.stringify(pacientes);
   }
 }
+

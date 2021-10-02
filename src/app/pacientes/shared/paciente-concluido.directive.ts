@@ -5,13 +5,13 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 })
 export class PacienteConcluidoDirective implements OnInit{
 
-  @Input() pacienteConlcuido: boolean;
+  @Input() PacienteConcluido: boolean;
 
   constructor(private el:ElementRef) { }
 
   ngOnInit(){
-    if(this.pacienteConlcuido){
-      this.el.nativeElement.style.textDecoration = "bg-green";
+    if(this.PacienteConcluido){
+      this.el.nativeElement.style.textDecoration = "line-through";
     }
   }
 
